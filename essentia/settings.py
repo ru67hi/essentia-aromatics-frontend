@@ -32,6 +32,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "whitenoise.middleware.whiteNoiseMiddleware",
 ]
 
 # --------------------
@@ -121,3 +122,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
 DEBUG = False
+
+
+ALLOWED_HOSTS = ["*" , ".onrender.com"]
