@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combo Packs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      width: 250px;
+      border-radius: 6px;
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Combo Packs</h1>
+
+<div class="products-container">
+
+  <div class="product-card">
+    <h3>Combo Product Name</h3>
+
+    <img src="lavender_cone.png" class="product-image" alt="Product Image">
+
+    <p>₹ 999</p>
+    <p>Product description goes here.</p>
+
+    <a href="#" class="btn btn-success">
+      Add to Cart
+    </a>
+  </div>
+
+  <!-- If no products -->
+  <!-- <p>No combo products available.</p> -->
+
+</div>
+
+</body>
+</html>

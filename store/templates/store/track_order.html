@@ -1,0 +1,19 @@
+<h2>Track Order</h2>
+
+<p><strong>Order ID:</strong> {{ order.id }}</p>
+<p><strong>Total:</strong> ₹{{ order.total_price }}</p>
+<p><strong>Status:</strong></p>
+
+<ul>
+  <li {% if order.status == 'Pending' %}style="font-weight:bold"{% endif %}>
+    🕒 Order Placed
+  </li>
+  <li {% if order.status == 'Shipped' %}style="font-weight:bold"{% endif %}>
+    🚚 Shipped
+  </li>
+  <li {% if order.status == 'Delivered' %}style="font-weight:bold"{% endif %}>
+    ✅ Delivered
+  </li>
+</ul>
+
+<a href="{% url 'orders' %}">Back to Orders</a>

@@ -1,0 +1,78 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Products</h1>
+
+<div class="category-filters">
+  <a href="{% url 'products' %}?category=sticks"
+     class="filter-btn {% if selected_category == 'sticks' %}active{% endif %}">
+     Incense Sticks
+  </a>
+
+  <a href="{% url 'products' %}?category=cones"
+     class="filter-btn {% if selected_category == 'cones' %}active{% endif %}">
+     Dhoop Cones
+  </a>
+
+  <a href="{% url 'products' %}?category=dhoop"
+     class="filter-btn {% if selected_category == 'dhoop' %}active{% endif %}">
+     Dhoop Sticks
+  </a>
+
+  <a href="{% url 'products' %}"
+     class="filter-btn {% if not selected_category %}active{% endif %}">
+     All
+  </a>
+</div>
+
+
+<div class="products-container">
+{% for product in products %}
+  <div class="product-card">
+
+    <h3>
+      <a href="{% url 'product' product.id %}">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    {% if product.image %}
+      <img src="{{ product.image.url }}" class="product-image">
+    {% else %}
+      <img src="{% static 'images/lavender_cone.png' %}" class="product-image">
+    {% endif %}
+
+    <p class="price">₹ {{ product.price }}</p>
+
+    <form method="post" action="{% url 'add_to_cart' product.id %}" class="cart-form">
+      {% csrf_token %}
+    
+      <!-- Quantity dropdown -->
+      <label for="quantity">Qty:</label>
+      <select name="quantity" class="qty-select">
+        {% for i in "12345678910"|make_list %}
+          <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+        {% endfor %}
+      </select>
+    
+      
+    </form>
+    
+
+    <!-- ✅ ADD TO CART BUTTON -->
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">
+      Add to Cart
+    </a>
+
+    <!-- Description below button -->
+    <p>{{ product.description }}</p>
+    <p class="category">Category: {{ product.category }}</p>
+
+  </div>
+{% empty %}
+  <p>No products found.</p>
+{% endfor %}
+</div>
+
+{% endblock %}

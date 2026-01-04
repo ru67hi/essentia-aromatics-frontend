@@ -1,0 +1,188 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div id="essentiaCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+  <div class="carousel-inner rounded shadow">
+
+    <div class="carousel-item active">
+      <img src="{% static 'store/slider/essen.jpg' %}"
+           class="d-block w-100 slider-img"
+           alt="Slide 1">
+    </div>
+
+    <div class="carousel-item">
+      <img src="{% static 'store/slider/offer.jpg' %}"
+           class="d-block w-100 slider-img"
+           alt="Slide 2">
+    </div>
+
+    <div class="carousel-item">
+      <img src="{% static 'store/slider/hamper.jpg' %}"
+           class="d-block w-100 slider-img"
+           alt="Slide 3">
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<!-- ================= ABOUT ================= -->
+<section class="py-5" style="background:#ffffff;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2>About Essentia Aromatics</h2>
+        <p>Pure, soulful fragrances crafted with tradition and care.</p>
+        <ul>
+          <li>🌿 Natural & eco-friendly</li>
+          <li>🕉️ Ideal for meditation</li>
+          <li>🔥 Long-lasting aromas</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="{% static 'store/slider/logo.png' %}" class="img-fluid rounded">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Shop by Category</h2>
+
+    <div class="row g-4">
+
+      <!-- INCENSE STICKS -->
+      <div class="col-md-4">
+        <div class="position-relative text-center">
+          <img src="{% static 'store/slider/stickad.jpg' %}"
+               class="img-fluid rounded w-100">
+
+          <a href="/products/?category=sticks"
+             class="btn btn-outline-light position-absolute top-50 start-50 translate-middle px-4"
+             style="background: rgba(0,0,0,0.35); border:1px solid #fff;">
+            View Products
+          </a>
+
+          <h5 class="mt-3">Premium Incense Sticks</h5>
+        </div>
+      </div>
+
+      <!-- DHOOP CONES -->
+      <div class="col-md-4">
+        <div class="position-relative text-center">
+          <img src="{% static 'store/slider/conesad.jpg' %}"
+               class="img-fluid rounded w-100">
+
+          <a href="/products/?category=cones"
+             class="btn btn-outline-light position-absolute top-50 start-50 translate-middle px-4"
+             style="background: rgba(0,0,0,0.35); border:1px solid #fff;">
+            View Products
+          </a>
+
+          <h5 class="mt-3">Premium Dhoop Cones</h5>
+        </div>
+      </div>
+
+      <!-- DHOOP STICKS -->
+      <div class="col-md-4">
+        <div class="position-relative text-center">
+          <img src="{% static 'store/slider/dstickad.png' %}"
+               class="img-fluid rounded w-100">
+
+          <a href="/products/?category=dhoop"
+             class="btn btn-outline-light position-absolute top-50 start-50 translate-middle px-4"
+             style="background: rgba(0,0,0,0.35); border:1px solid #fff;">
+            View Products
+          </a>
+
+          <h5 class="mt-3">Premium Dhoop Sticks</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= OFFERS ================= -->
+<section class="my-5 py-5" style="background:#f3efe9;">
+  <div class="container">
+
+    <h2 class="text-center fw-bold mb-2" style="color:#5a3e2b;">
+      Exclusive Offers
+    </h2>
+    <p class="text-center text-muted mb-5">
+      Handcrafted deals curated just for you
+    </p>
+
+    <div class="row g-4">
+
+      <!-- 3 IN 1 COMBO -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center">
+          <div class="card-body">
+            <span class="badge bg-success mb-3">Best Value</span>
+            <h5 class="fw-bold">3-in-1 Fragrance Combo</h5>
+            <p class="text-muted">
+              Incense Sticks + Cones + Dhoop<br>
+              One box. Three experiences.
+            </p>
+            <a href="{% url 'combo_products' %}" class="btn btn-dark mt-3">
+              Shop Combo
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- FIRST ORDER -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center">
+          <div class="card-body">
+            <span class="badge bg-warning text-dark mb-3">New Customers</span>
+            <h5 class="fw-bold">10% OFF on First Order</h5>
+            <p class="text-muted">
+              Start your aromatic journey with<br>
+              an exclusive welcome discount.
+            </p>
+            <h6 class="fw-bold text-success">Use Code: FIRST10</h6>
+            <a href="{% url 'products' %}" class="btn btn-dark">
+              Shop Now
+          </a>
+          
+          </div>
+        </div>
+      </div>
+
+      <!-- HAMPERS -->
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm text-center">
+          <div class="card-body">
+            <span class="badge bg-danger mb-3">Gifting Special</span>
+            <h5 class="fw-bold">Fragrance Hampers</h5>
+            <p class="text-muted">
+              Thoughtfully curated hampers<br>
+              perfect for festivals & gifting.
+            </p>
+            <a href="{% url 'hamper_products' %}" class="btn btn-dark">
+              Explore Hampers
+            </a>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
