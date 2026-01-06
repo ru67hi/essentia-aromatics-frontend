@@ -1,4 +1,8 @@
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'store',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 # --------------------
@@ -32,7 +38,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    "whitenoise.middleware.whiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 # --------------------
@@ -118,6 +124,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ALLOWED_HOSTS = ['*']
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE= 'whitenoise.storage.compressedManifestStaticFilesStorage'
 
 CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
@@ -125,3 +132,12 @@ DEBUG = False
 
 
 ALLOWED_HOSTS = ["*" , ".onrender.com"]
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'deyw1xlsa',
+    'API_KEY': '528778421333263',
+    'API_SECRET': 't1pJPh7IF0qlhHEantap1H521OU',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
