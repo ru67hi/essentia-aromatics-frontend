@@ -2,7 +2,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'store',
     'cloudinary',
     'cloudinary_storage',
+    'whitenoise.runserver_nostatic',
+
 ]
 
 # --------------------
@@ -33,14 +35,14 @@ INSTALLED_APPS = [
 # --------------------
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    
 ]
-
 # --------------------
 # URLS & TEMPLATES
 # --------------------
@@ -84,6 +86,12 @@ STATIC_URL = '/static/'
 # ✅ THIS IS CORRECT FOR YOUR PROJECT
 STATICFILES_DIRS = [
     BASE_DIR / 'store' / 'static',
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 ]
 
 # --------------------
