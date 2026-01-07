@@ -1,2 +1,5 @@
-essentia/__pycache__
-venv
+__pycache__/
+*.pyc
+.env
+venv/
+db.sqlite3
