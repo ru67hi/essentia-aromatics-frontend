@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
+
+
 
 
 class Product(models.Model):
@@ -7,14 +10,14 @@ class Product(models.Model):
         ('sticks', 'Incense Sticks'),
         ('cones', 'Dhoop Cones'),
         ('dhoop', 'Dhoop Sticks'),
-        ('combo', 'Combo Pack'), 
+        ('combo', 'Combo Pack'),
         ('hamper', 'Hamper'),
     ]
 
     name = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     weight = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = CloudinaryField('image')   # ✅ ONLY THIS
     description = models.TextField(blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
     is_bestseller = models.BooleanField(default=False)
@@ -35,8 +38,6 @@ class Cart(models.Model):
         return self.product.price * self.quantity
 
 
-
-
 class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -47,12 +48,10 @@ class ContactMessage(models.Model):
         return self.name
 
 
-
-
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    
+
     STATUS_CHOICES = [
         ('Pending', 'Pending'),
         ('Shipped', 'Shipped'),

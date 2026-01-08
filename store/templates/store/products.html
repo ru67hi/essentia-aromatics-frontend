@@ -38,11 +38,12 @@
     </h3>
 
     {% if product.image %}
-      <img src="{{ product.image.url }}" class="product-image">
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
     {% else %}
-      <img src="{% static 'images/lavender_cone.png' %}" class="product-image">
+    <img src="{% static 'images/lavender_cone.png' %}" alt="No image" class="product-image">
     {% endif %}
 
+     
     <p class="price">₹ {{ product.price }}</p>
 
     <form method="post" action="{% url 'add_to_cart' product.id %}" class="cart-form">

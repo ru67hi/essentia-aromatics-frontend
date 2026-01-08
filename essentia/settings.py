@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,6 +12,14 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-secret-key')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*', '.onrender.com']
+
+cloudinary.config(
+    cloud_name="deyw1xlsa",
+    api_key="528778421333263",
+    api_secret="t1pJPh7IF0qlhHEantap1H521OU",
+    secure=True
+)
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
