@@ -23,13 +23,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'store',
+    'whitenoise.runserver_nostatic',
 
     'cloudinary',
     'cloudinary_storage',
 
-    'whitenoise.runserver_nostatic',
+    'store',
 ]
+
 
 # --------------------
 # MIDDLEWARE
@@ -44,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
+
 
 # --------------------
 # URLS & TEMPLATES
