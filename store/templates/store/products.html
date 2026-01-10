@@ -62,9 +62,11 @@
     
 
     <!-- ✅ ADD TO CART BUTTON -->
-    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">
-      Add to Cart
-    </a>
+    <form method="post" action="{% url 'add_to_cart' product.id %}">
+      {% csrf_token %}
+      <button type="submit">Add to Cart</button>
+    </form>
+    
 
     <!-- Description below button -->
     <p>{{ product.description }}</p>

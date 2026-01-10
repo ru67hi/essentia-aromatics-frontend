@@ -1,33 +1,19 @@
-{% extends 'store/base.html' %}
-{% load static %}
+{% extends "store/base.html" %}
 
 {% block content %}
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow p-4" style="width: 400px; border-radius: 10px;">
-        
-        <h3 class="text-center mb-4">Login to Essentia Aromatics</h3>
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="text-center">Login</h2>
 
-        <form method="post">
-            {% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-            <div class="mb-3">
-                <label class="form-label">Username</label>
-                {{ form.username }}
-            </div>
+        <button class="btn btn-dark w-100">Login</button>
+    </form>
 
-            <div class="mb-3">
-                <label class="form-label">Password</label>
-                {{ form.password }}
-            </div>
-
-            <button type="submit" class="btn btn-dark w-100">Login</button>
-        </form>
-
-        <p class="text-center mt-3">
-            Don't have an account?
-            <a href="{% url 'signup' %}">Sign up</a>
-        </p>
-
-    </div>
+    <p class="text-center mt-3">
+        Don’t have an account?
+        <a href="{% url 'signup' %}">Sign up</a>
+    </p>
 </div>
 {% endblock %}

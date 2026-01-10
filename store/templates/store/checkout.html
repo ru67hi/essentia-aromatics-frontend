@@ -1,18 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Checkout</title>
-</head>
-<body>
+{% extends 'store/base.html' %}
+{% block content %}
 
-<h1>Checkout</h1>
+<div class="container my-5">
+  <h3 class="fw-bold mb-4">Checkout</h3>
 
-<p>Total Amount: {{ total_amount }}</p>
+  {% if cart_items %}
+    <div class="card shadow">
+      <div class="card-body">
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Place Order</button>
-</form>
+        {% for item in cart_items %}
+          <div class="d-flex justify-content-between border-bottom py-2">
+            <div>
+              <strong>{{ item.product.name }}</strong>
+              <small class="text-muted">(x{{ item.quantity }})</small>
+            </div>
+            <div>
+              ₹ {{ item.subtotal }}
+            </div>
+          </div>
+        {% endfor %}
 
-</body>
-</html>
+        <hr>
+
+        <h5 class="fw-bold text-end">
+          Total Amount: ₹ {{ cart_total }}
+        </h5>
+
+        <form method="post" class="mt-4">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success w-100">
+            Confirm Order
+          </button>
+        </form>
+
+      </div>
+    </div>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

@@ -106,9 +106,10 @@ CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 # --------------------
 # AUTH
 # --------------------
-LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = '/login/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+
 
 # --------------------
 # EMAIL
